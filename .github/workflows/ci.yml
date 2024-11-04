@@ -39,5 +39,5 @@ jobs:
         # -W is too noisy as it treats all warnings as errors and we have a lot of warnings
         # SPHINXOPTS='-W --keep-going' make html
         cd docs
-        make html 2>&1 > html.log
+        make html >html.log 2>&1
         grep -E "ERROR|CRITICAL" html.log
