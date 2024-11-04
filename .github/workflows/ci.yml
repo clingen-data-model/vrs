@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  setup:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -23,6 +23,9 @@ jobs:
         python -m pip install --upgrade pip setuptools
         pip install -r .requirements.txt --pre
 
+  jsonschema:
+    runs-on: ubuntu-latest
+    steps:
     - name: Build jsonschema
       run: |
         cd schema
