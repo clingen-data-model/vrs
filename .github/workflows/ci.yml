@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  setup:
+  ci:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -27,3 +27,9 @@ jobs:
       run: |
         cd schema
         make all
+
+    - name: Validate jsonschemas are valid
+      run: |
+        for schema_f in schema/vrs/json/*; do
+          python -c "import json, jsonschema; jsonschema.Draft202012Validator.check_schema(json.load(open('$schema_f')))"
+        done
