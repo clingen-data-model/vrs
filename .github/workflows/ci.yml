@@ -33,3 +33,7 @@ jobs:
         for schema_f in schema/vrs/json/*; do
           python -c "import json, jsonschema; jsonschema.Draft202012Validator.check_schema(json.load(open('$schema_f')))"
         done
+
+    - name: Build HTML
+      run: |
+        SPHINXOPTS='-W --keep-going' make html
