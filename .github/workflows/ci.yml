@@ -40,4 +40,5 @@ jobs:
         # SPHINXOPTS='-W --keep-going' make html
         cd docs
         make html >html.log 2>&1
-        grep -E "ERROR|CRITICAL" html.log
+        # set exit code if found
+        grep -E "ERROR|CRITICAL" html.log && false
